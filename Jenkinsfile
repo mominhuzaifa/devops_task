@@ -13,7 +13,8 @@ pipeline {
             steps {
                 script {
                     
-                    sh "pm2 stop all"
+                    //sh "pm2 stop all"
+                    sh "java --version"
                 }
             }
         }
@@ -21,7 +22,8 @@ pipeline {
         stage('Remove exisiting code'){
             steps{
                 script{
-                    sh 'rm -rf /opt/checkout/react-todo-app'
+                    //sh 'rm -rf /opt/checkout/react-todo-app'
+                    sh "java --version"
                 }
             }
         }
@@ -30,7 +32,8 @@ pipeline {
             steps {
                 script {
                     // Pull fresh code from Git
-                    sh "git clone ${GIT_REPO} ${CHECKOUT_DIR}"
+                   // sh "git clone ${GIT_REPO} ${CHECKOUT_DIR}"
+                   sh "java --version"
                 }
             }
         }
@@ -39,7 +42,8 @@ pipeline {
             steps {
                 script {
                     // Build your React app
-                    sh "cd ${CHECKOUT_DIR} && npm install && npm run build"
+                    //sh "cd ${CHECKOUT_DIR} && npm install && npm run build"
+                    sh "java --version"
                 }
             }
         }
@@ -48,7 +52,8 @@ pipeline {
             steps {
                 script {
                     // Deploy using PM2
-                    sh "pm2 start ${CHECKOUT_DIR}/src/index.js"
+                    //sh "pm2 start ${CHECKOUT_DIR}/src/index.js"
+                    sh "java --version"
                 }
             }
         }
