@@ -62,7 +62,7 @@ pipeline {
         steps {
             script {
                 // Use the S3 plugin to upload files
-                publishS3Bucket(
+                s3Upload(
                     site: 'arn:aws:s3:::viamagus',
                     region: 'ap-south-1',
                     bucket: 'viamagus',
