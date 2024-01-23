@@ -13,8 +13,8 @@ pipeline {
             steps {
                 script {
                     
-                    //sh "pm2 stop all"
-                    sh "java --version"
+                    sh "pm2 stop all"
+                   
                 }
             }
         }
@@ -22,8 +22,8 @@ pipeline {
         stage('Remove exisiting code'){
             steps{
                 script{
-                    //sh 'rm -rf /opt/checkout/react-todo-app'
-                    sh "java --version"
+                    sh 'rm -rf /opt/checkout/react-todo-app'
+                    
                 }
             }
         }
@@ -32,8 +32,8 @@ pipeline {
             steps {
                 script {
                     // Pull fresh code from Git
-                   // sh "git clone ${GIT_REPO} ${CHECKOUT_DIR}"
-                   sh "java --version"
+                   sh "git clone ${GIT_REPO} ${CHECKOUT_DIR}"
+                   
                 }
             }
         }
@@ -42,8 +42,8 @@ pipeline {
             steps {
                 script {
                     // Build your React app
-                    //sh "cd ${CHECKOUT_DIR} && npm install && npm run build"
-                    sh "java --version"
+                    sh "cd ${CHECKOUT_DIR} && npm install && npm run build"
+                    
                 }
             }
         }
@@ -52,8 +52,7 @@ pipeline {
             steps {
                 script {
                     // Deploy using PM2
-                    //sh "pm2 start ${CHECKOUT_DIR}/src/index.js"
-                    sh "java --version"
+                    sh "pm2 start ${CHECKOUT_DIR}/src/index.js"
                 }
             }
         }
@@ -61,18 +60,18 @@ pipeline {
         stage('Upload to S3') {
         steps {
             script {
-                sh 'java --version'
-                // Use the S3 plugin to upload files
-                // s3Upload(
-                //     site: 'arn:aws:s3:::viamagus',
-                //     region: 'ap-south-1',
-                //     bucket: 'viamagus',
-                //     filesPath: "${CHECKOUT_DIR}",
-                //     flatten: true,
-                //     endpoint: 's3.amazonaws.com',
-                //     acl: 'PublicRead',
-                //     otherProperties: '{"Cache-Control": "max-age=31536000, public"}'
-                //     )
+                
+                //Use the S3 plugin to upload files
+                s3Upload(
+                    site: 'arn:aws:s3:::viamagus',
+                    region: 'ap-south-1',
+                    bucket: 'viamagus',
+                    filesPath: "${CHECKOUT_DIR}",
+                    flatten: true,
+                    endpoint: 's3.amazonaws.com',
+                    acl: 'PublicRead',
+                    otherProperties: '{"Cache-Control": "max-age=31536000, public"}'
+                    )
                 }
             }
         }
