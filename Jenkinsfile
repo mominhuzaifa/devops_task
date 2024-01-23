@@ -61,17 +61,18 @@ pipeline {
         stage('Upload to S3') {
         steps {
             script {
+                sh 'java --version'
                 // Use the S3 plugin to upload files
-                s3Upload(
-                    site: 'arn:aws:s3:::viamagus',
-                    region: 'ap-south-1',
-                    bucket: 'viamagus',
-                    filesPath: "${CHECKOUT_DIR}",
-                    flatten: true,
-                    endpoint: 's3.amazonaws.com',
-                    acl: 'PublicRead',
-                    otherProperties: '{"Cache-Control": "max-age=31536000, public"}'
-                    )
+                // s3Upload(
+                //     site: 'arn:aws:s3:::viamagus',
+                //     region: 'ap-south-1',
+                //     bucket: 'viamagus',
+                //     filesPath: "${CHECKOUT_DIR}",
+                //     flatten: true,
+                //     endpoint: 's3.amazonaws.com',
+                //     acl: 'PublicRead',
+                //     otherProperties: '{"Cache-Control": "max-age=31536000, public"}'
+                //     )
                 }
             }
         }
