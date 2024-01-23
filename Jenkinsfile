@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     
-                    sh "pm2 stop ${CHECKOUT_DIR}/src/index.js"
+                    sh "pm2 stop all"
                 }
             }
         }
