@@ -19,14 +19,14 @@ pipeline {
             }
         }
 
-        stage('Remove exisiting code'){
-            steps{
-                script{
+        //stage('Remove exisiting code'){
+            //steps{
+           //     script{
                    // sh 'rm -rf /opt/checkout/react-todo-app'
-                    
-                }
-            }
-        }
+         //           
+       //         }
+     //       }
+   //     }
 
         stage('Pull Fresh Code from Git') {
             steps {
