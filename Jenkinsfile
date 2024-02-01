@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     
-                    sh "pm2 stop all"
+                  sh "pm2 stop all"
                    
                 }
             }
@@ -22,7 +22,7 @@ pipeline {
         stage('Remove exisiting code'){
             steps{
                 script{
-                    sh 'rm -rf /opt/checkout/react-todo-app'
+                   // sh 'rm -rf /opt/checkout/react-todo-app'
                     
                 }
             }
